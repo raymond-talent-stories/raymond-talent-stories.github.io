@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer>
+<footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -90,13 +90,14 @@
                     </li>
                     {% endif %}
                 </ul>
-                <p class="text-muted">
-                    <button onclick="backtotop()" class="btn btn-light">回到顶部</button>
-                </p>
             </div>
         </div>
     </div>
 </footer>
+
+<div class="text-center">
+    <button onclick="backtotop()" class="btn btn-light">回到顶部</button>
+</div>
 
 <!-- jQuery -->
 <script src="{{ " /js/jquery.min.js " | prepend: site.baseurl }}"></script>

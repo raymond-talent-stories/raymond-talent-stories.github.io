@@ -685,6 +685,7 @@ pre code {
 footer {
   font-size: 20px;
   padding: 50px 0 65px;
+  border-bottom: 1px solid #eee;
 }
 footer .list-inline {
   margin: 0;
