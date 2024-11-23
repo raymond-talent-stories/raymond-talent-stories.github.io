@@ -5,7 +5,7 @@ header-img: img/post-bg-desk.jpg
 email: iray100200@hotmail.com
 description: "Every failure is leading towards success."
 keyword: "React, Angular, Vue"
-url: "http://raymond.github.io"          # your host, for absolute URL
+url: "http://raymond-talent-stories.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/raymond-talent-stories/raymond.github.io.git" # you code repository
 
@@ -55,9 +55,9 @@ gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: f2c84e7629bb1446c1a4                            #生成的clientID
   clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-  repo: raymond-stories.github.io    #仓库名称
-  owner: raymond-stories    #github用户名
-  admin: raymond-stories
+  repo: raymond-talent-stories.github.io    #仓库名称
+  owner: raymond    #github用户名
+  admin: raymond
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
