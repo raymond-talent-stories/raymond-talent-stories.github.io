@@ -403,7 +403,7 @@ pre code {
 .navbar-custom .navbar-brand {
   font-weight: 800;
   color: white;
-  height: 56px;
+  height: 60px;
   line-height: 25px;
 }
 .navbar-custom .navbar-brand:hover {
@@ -429,7 +429,7 @@ pre code {
   }
   .navbar-custom .navbar-brand {
     color: white;
-    padding: 20px;
+    padding: 14px 20px;
     line-height: 20px;
   }
   .navbar-custom .navbar-brand:hover,
