@@ -7,7 +7,8 @@ author:     Raymond Zhang
 header-img: img/react-page.avif
 catalog: true
 tags:
-    - React, Frontend
+    - React
+    - Frontend
 ---
 
 # React
