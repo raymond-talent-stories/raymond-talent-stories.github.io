@@ -100,6 +100,7 @@ layout: default
                     admin: ['{{site.gitalk.admin}}'],
                     distractionFreeMode: {{site.gitalk.distractionFreeMode}},
                     id: md5(location.pathname),
+                    redirectUrl: 'https://raymond-talent-stories.github.io/'
                     });
                     gitalk.render('gitalk-container');
                 </script>
@@ -154,17 +155,6 @@ layout: default
         				{% endfor %}
         			</div>
                 </section>
-                {% endif %}
-
-                <!-- Friends Blog -->
-                {% if site.friends %}
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    {% for friend in site.friends %}
-                        <li><a href="{{friend.href}}">{{friend.title}}</a></li>
-                    {% endfor %}
-                </ul>
                 {% endif %}
             </div>
         </div>
