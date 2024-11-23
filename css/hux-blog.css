@@ -1089,39 +1089,3 @@ img::-moz-selection {
 .page-fullscreen footer .copyright a:hover {
   color: #ddd;
 }
-.flex {
-  display: flex;
-}
-.flex.column {
-  flex-direction: column;
-}
-.flex.vcenter {
-  align-items: center;
-}
-.flex.hcenter {
-  justify-content: center;
-}
-.font-size-12 {
-  font-size: 12px;
-}
-.font-size-14 {
-  font-size: 14px;
-}
-.font-size-16 {
-  font-size: 16px;
-}
-.font-size-18 {
-  font-size: 18px;
-}
-.font-size-20 {
-  font-size: 20px;
-}
-.color-white {
-  color: #ffffff;
-}
-.color-black {
-  color: #000000;
-}
-.color-lightgrey {
-  color: lightgrey;
-}
