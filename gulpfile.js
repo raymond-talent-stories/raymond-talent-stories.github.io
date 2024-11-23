@@ -6,7 +6,7 @@ const cssmin = require('gulp-cssmin');
 async function buildLess(cb) {
   return gulp.src('less/*.less')
     .pipe(less())
-    .pipe(cssmin().on('data', console.log))
+    .pipe(cssmin())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('./css'));
 }
