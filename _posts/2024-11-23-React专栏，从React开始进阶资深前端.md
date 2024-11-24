@@ -6,14 +6,15 @@ date:       2024-11-23
 author:     Raymond Zhang
 header-img: img/react-page.avif
 catalog: true
-key: 2024-11-23-fax
 tags:
     - React
     - Frontend
+images:
+    image1: /img/2024-11-23/2024-11-24 12.40.42.png
 ---
 
 ## 起源
-从[`维基百科`](https://zh.wikipedia.org/zh-cn/React)中可以知道React的早期雏形[`Fax.js`](https://github.com/jordwalke/FaxJs)由Jordan Walke于2011年左右建立，并依然托管在Github上。![alt text](/img/{{ page.key }}/fax-on-github.png)
+从[`维基百科`](https://zh.wikipedia.org/zh-cn/React)中可以知道React的早期雏形[`Fax.js`](https://github.com/jordwalke/FaxJs)由Jordan Walke于2011年左右建立，并依然托管在Github上。![alt text]({{ page.images.image1 }})
 那么让我们通过这个雏形项目的源代码窥探那些前端大神的革命思想。
 
 ### 案例
