@@ -13,6 +13,6 @@ tags:
 ---
 
 ## 起源
-从[维基百科](https://zh.wikipedia.org/zh-cn/React)中可以知道React的早期雏形[Fax.js](https://github.com/jordwalke/FaxJs)由Jordan Walke于2011年左右建立，并依然托管在Github上![alt text](img/{{id}}/fax-on-github.png)
+从[维基百科](https://zh.wikipedia.org/zh-cn/React)中可以知道React的早期雏形[Fax.js](https://github.com/jordwalke/FaxJs)由Jordan Walke于2011年左右建立，并依然托管在Github上![alt text](img/{{ page.id }}/fax-on-github.png)
 那么让我们通过这个雏形项目的源代码窥探那些前端大神的革命思想。
 ## 发展
