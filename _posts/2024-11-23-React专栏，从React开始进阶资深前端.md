@@ -6,7 +6,7 @@ date:       2024-11-23
 author:     Raymond Zhang
 header-img: img/react-page.avif
 catalog: true
-id: 2024-11-23-fax
+key: 2024-11-23-fax
 tags:
     - React
     - Frontend
