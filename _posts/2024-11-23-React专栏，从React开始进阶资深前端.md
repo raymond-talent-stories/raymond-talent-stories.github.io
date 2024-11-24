@@ -118,7 +118,7 @@ NativeComponentConstructor.prototype.genMarkup = function(idRoot) {
 
 };
 ```
-首选，程序内部使用`generateSingleDomAttributes`生成当前节点的所有属性并附加到`html`，然后调用`generateDomChildren`处理当前节点的子元素，在`FDomTraversal.js`内部定义了遍历子元素的算法-深度优先遍历，在`generateDomChildren`阶段会通过递归方式生成最终地用于渲染的`html`代码。
+首先，程序内部使用`generateSingleDomAttributes`生成当前节点的所有属性并附加到`html`，然后调用`generateDomChildren`处理当前节点的子元素，在`FDomTraversal.js`内部定义了遍历子元素的算法-深度优先遍历，在`generateDomChildren`阶段会通过递归方式生成最终地用于渲染的`html`代码。
 <br>
 
 ## 发展
