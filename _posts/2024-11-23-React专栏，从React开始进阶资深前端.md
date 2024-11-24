@@ -68,7 +68,6 @@ NativeComponentConstructor.prototype.genMarkup = function(idRoot) {
 NativeComponentConstructor.prototype.updateAllProps = function(nextProps) {
   FErrors.throwIf(!this._rootDomId, FErrors.CONTROL_WITHOUT_BACKING_DOM);
 
-  /* Control the header (and any content property) */
   this.rootDomNode = controlSingleDomNode(
     this.rootDomNode,
     this._rootDomId,
