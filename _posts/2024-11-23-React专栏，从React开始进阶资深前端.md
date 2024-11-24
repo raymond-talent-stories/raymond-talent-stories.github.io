@@ -46,10 +46,8 @@ var MainComponent = exports.MainComponent = F.Componentize({
 NativeComponentConstructor.prototype.genMarkup = function(idRoot) {
   var props = this.props;
 
-  /* The open tag (and anything from content key) */
   var markup = tagOpen + generateSingleDomAttributes.call(this, idRoot);
 
-  /* Children */
   markup += generateDomChildren.call(
     this,
     idRoot,
@@ -58,7 +56,6 @@ NativeComponentConstructor.prototype.genMarkup = function(idRoot) {
       extractChildrenLegacy(props)
   );
 
-  /* The footer */
   markup += tagClose;
 
   return markup;
@@ -78,10 +75,8 @@ NativeComponentConstructor.prototype.updateAllProps = function(nextProps) {
     nextProps,
     this.props);
 
-  /* Mutate the properties. */
   this.props = nextProps;
 
-  /* Control the children */
   reconcileDomChildren.call(
     this,
     nextProps[CHILD_LIST_KEY] ||
