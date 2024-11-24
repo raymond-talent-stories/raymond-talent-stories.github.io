@@ -43,16 +43,6 @@ var MainComponent = exports.MainComponent = F.Componentize({
 ```
 `F.Componentize`接收一个构造函数，并在构造函数内返回一段结构化的代码，`Div`来源于`Fdom.js`，通过`makeDomContainerComponent`创建的一个虚拟`DOM`-`div`，其本质是一个`NativeComponentConstructor`构造函数，该函数包含`updateAllProps`和`genMarkup`两个方法。接下来让我们先看看`genMarkup`是怎么工作的：
 ```javascript
-/**
- * @genMarkup:
- * - First generate the tag header markup itself.
- * - Then generate the children markup.
- * Some notes:
- * - The two properties .childList and .childSet could be unified into
- *   a single property called .children.
- * - The code path for extracting "legacy" children could be removed when
- *   no components are using that child specification format.
- */
 NativeComponentConstructor.prototype.genMarkup = function(idRoot) {
   var props = this.props;
 
@@ -78,12 +68,6 @@ NativeComponentConstructor.prototype.genMarkup = function(idRoot) {
 <br>
 接下来分析下`updateAllProps`方法：
 ```javascript
-/**
-  * @updateAllProps: Controls a native dom component after it has already been
-  * allocated and attached to the dom.
-  * - First reconcile the dom node itself.
-  * - Then reconcile the children.
-  */
 NativeComponentConstructor.prototype.updateAllProps = function(nextProps) {
   FErrors.throwIf(!this._rootDomId, FErrors.CONTROL_WITHOUT_BACKING_DOM);
 
