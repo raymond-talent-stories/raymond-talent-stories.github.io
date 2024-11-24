@@ -41,7 +41,7 @@ var MainComponent = exports.MainComponent = F.Componentize({
   }
 });
 ```
-`F.Componentize`接收一个构造函数，并在构造函数内返回一段结构化的代码，`Div`来源于`Fdom.js`，通过`makeDomContainerComponent`创建的一个虚拟`DOM`-`div`，其本质是一个`NativeComponentConstructor`构造函数，该函数包含`updateAllProps`和`genMarkup`两个方法。接下来让我们先看看`genMarkup`是怎么工作的：
+`F.Componentize`接收一个构造函数，并在构造函数内返回一段结构化的代码，`Div`来源于`Fdom.js`，通过`makeDomContainerComponent`创建的一个虚拟`DOM`-`div`，其本质是一个`NativeComponentConstructor`构造函数，该函数包含`updateAllProps`和`genMarkup`两个方法。接下来让我们先看看`genMarkup`和`updateAllProps`是怎么工作的：
 
 ```javascript
 var NativeComponentConstructor = function(initProps) {
