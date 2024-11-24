@@ -42,47 +42,83 @@ var MainComponent = exports.MainComponent = F.Componentize({
 });
 ```
 `F.Componentize`接收一个构造函数，并在构造函数内返回一段结构化的代码，`Div`来源于`Fdom.js`，通过`makeDomContainerComponent`创建的一个虚拟`DOM`-`div`，其本质是一个`NativeComponentConstructor`构造函数，该函数包含`updateAllProps`和`genMarkup`两个方法。接下来让我们先看看`genMarkup`是怎么工作的：
+
 ```javascript
+var NativeComponentConstructor = function(initProps) {
+  this.props = initProps;
+};
+
+/**
+ * @ConvenienceConstructor: When you instantiate a div({}), there's actually
+ * a backing class called 'ActualDivClass'. Executing the div function simply
+ * calls new ActualDivClass(props).
+ */
+var ConvenienceConstructor = function(propsParam) {
+  var props = propsParam || this;
+  return new NativeComponentConstructor(props);
+};
+
+/**
+ * @updateAllProps: Controls a native dom component after it has already been
+ * allocated and attached to the dom.
+ * - First reconcile the dom node itself.
+ * - Then reconcile the children.
+ */
+NativeComponentConstructor.prototype.updateAllProps = function(nextProps) {
+  FErrors.throwIf(!this._rootDomId, FErrors.CONTROL_WITHOUT_BACKING_DOM);
+
+  /* Control the header (and any content property) */
+  this.rootDomNode = controlSingleDomNode(
+      this.rootDomNode,
+      this._rootDomId,
+      nextProps,
+      this.props);
+
+  /* Mutate the properties. */
+  this.props = nextProps;
+
+  /* Control the children */
+  reconcileDomChildren.call(
+    this,
+    nextProps[CHILD_LIST_KEY] ||
+        nextProps[CHILD_SET_KEY] ||
+        extractChildrenLegacy(nextProps)
+  );
+};
+
+/**
+ * @genMarkup:
+ * - First generate the tag header markup itself.
+ * - Then generate the children markup.
+ * Some notes:
+ * - The two properties .childList and .childSet could be unified into
+ *   a single property called .children.
+ * - The code path for extracting "legacy" children could be removed when
+ *   no components are using that child specification format.
+ */
 NativeComponentConstructor.prototype.genMarkup = function(idRoot) {
   var props = this.props;
 
+  /* The open tag (and anything from content key) */
   var markup = tagOpen + generateSingleDomAttributes.call(this, idRoot);
 
+  /* Children */
   markup += generateDomChildren.call(
     this,
     idRoot,
     props[CHILD_LIST_KEY] ||
-      props[CHILD_SET_KEY] ||
-      extractChildrenLegacy(props)
+        props[CHILD_SET_KEY] ||
+        extractChildrenLegacy(props)
   );
 
+  /* The footer */
   markup += tagClose;
 
   return markup;
+
 };
 ```
 首选，程序内部使用`generateSingleDomAttributes`生成当前节点的所有属性并附加到`html`，然后调用`generateDomChildren`处理当前节点的子元素，在`FDomTraversal.js`内部定义了遍历子元素的算法-深度优先遍历，在`generateDomChildren`阶段会通过递归方式生成最终地用于渲染的`html`代码。
 <br>
-接下来分析下`updateAllProps`方法：
-```javascript
-NativeComponentConstructor.prototype.updateAllProps = function(nextProps) {
-  FErrors.throwIf(!this._rootDomId, FErrors.CONTROL_WITHOUT_BACKING_DOM);
-
-  this.rootDomNode = controlSingleDomNode(
-    this.rootDomNode,
-    this._rootDomId,
-    nextProps,
-    this.props);
-
-  this.props = nextProps;
-
-  reconcileDomChildren.call(
-    this,
-    nextProps[CHILD_LIST_KEY] ||
-      nextProps[CHILD_SET_KEY] ||
-      extractChildrenLegacy(nextProps)
-  );
-};
-```
 
 ## 发展
