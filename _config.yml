@@ -38,8 +38,11 @@ gems: [jekyll-paginate]
 markdown: kramdown
 highlighter: rouge
 kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
-  syntax_highlighter: rouge
+  syntax_highlighter: coderay
+  syntax_highlighter_opts:
+    line_numbers: table
+    bold_every: 5
+
 # 评论系统
 # Disqus（https://disqus.com/）
 # disqus_username: raymond-stories
