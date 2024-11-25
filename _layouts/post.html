@@ -34,7 +34,7 @@ layout: default
 </style>
 <header class="intro-header" >
     {% if page.header-html %}
-    <div class="header-html-bg" style="background-image: url('{{ site.baseurl }}')">
+    <div class="header-html-bg" style="filter: {{ page.filter }}">
         {% include {{ page.header-html }} %}
     </div>
     {% endif %}
