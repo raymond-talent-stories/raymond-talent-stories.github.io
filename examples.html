@@ -4,26 +4,28 @@ layout: default
 header-img: "img/home-bg.jpg"
 ---
 
+<link rel="stylesheet" href="/css/examples.min.css">
 <header class="intro-header"
-	style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>Stay hungry, stay foolish</h1>
-				</div>
-			</div>
-		</div>
-	</div>
+  style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
 </header>
-
-{% for page in site.pages %}{% if page.layout == "example" %}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1">
+      <ul class="example-cards">
+        <li class="example-item">
+          {% for page in site.pages %}{% if page.layout == "example" %}
+          <div class="card">
+            <img class="card-img-top" src="{{ page.preview }}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ page.name }}</h5>
+              <p class="card-text">
+                <a href="{{ page.url }}">{{ page.descripiton }}</a>
+              </p>
+            </div>
+          </div>
+          {% endif %}{% endfor %}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
-{% endif %}{% endfor %}
