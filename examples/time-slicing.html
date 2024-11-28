@@ -34,7 +34,7 @@ example-preview: /img/2024-11-01/example.png
 </head>
 
 <body>
-  <button type="button" class="btn btn-primary" onclick="appendMultipleTasks(3)">使用时间切片生成随机颜色表格</button>
+  <button type="button" class="btn btn-primary" onclick="appendTasks(3)">使用时间切片生成随机颜色表格</button>
   <table id="table" border="1px">
     <tr>
       <th>COL 1</th>
@@ -65,15 +65,15 @@ example-preview: /img/2024-11-01/example.png
           }
         }
       }
-      return workLoop;
+      return workLoop
     }
     class Task {
       currentTime = null
       constructor(task) {
-        this.task = task;
+        this.task = task
       }
       run() {
-        this.task();
+        this.task()
       }
     }
     class TimeSlicing {
@@ -101,22 +101,23 @@ example-preview: /img/2024-11-01/example.png
     }
   </script>
   <script>
-    let loopsize = 10000
-    let n = loopsize
+    let loopSize = 10000
+    let n = loopSize
     const timeSlicing = new TimeSlicing()
     const channel = new MessageChannel()
     channel.port1.onmessage = function () {
       if (n > 0) {
-        appendMultipleTasks(5)
+        appendTasks(5)
       }
     }
 
-    function appendMultipleTasks(current) {
+    function appendTasks(current) {
+      table.innerHTML = '';
       const currentTime = performance.now()
       appendTask()
       const left = current - (performance.now() - currentTime)
       if (left > 0 && n > 0) {
-        appendMultipleTasks(left)
+        appendTasks(left)
       } else {
         channel.port2.postMessage(null)
       }
