@@ -7,11 +7,8 @@ title: 时间切片
 
 <head>
   <title>时间切片</title>
+  <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
   <style>
-    body {
-      word-break: break-all;
-    }
-
     table {
       table-layout: fixed;
       width: 100%;
@@ -28,7 +25,7 @@ title: 时间切片
 </head>
 
 <body>
-  <button onclick="appendMultipleTasks(3)">使用时间切片生成随机颜色表格</button>
+  <button type="button" class="btn btn-primary" onclick="appendMultipleTasks(3)">使用时间切片生成随机颜色表格</button>
   <table id="table" border="1px">
     <tr>
       <th>COLUMN 1</th>
