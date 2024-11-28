@@ -1,5 +1,5 @@
 ---
-title: 时间切片
+layout: example
 ---
 
 <!DOCTYPE html>
@@ -9,11 +9,14 @@ title: 时间切片
   <title>时间切片</title>
   <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
   <style>
+    body {
+      margin: 0;
+    }
     table {
       table-layout: fixed;
       width: 100%;
       margin-top: 12px;
-      font-size: 0.875rem;
+      font-size: 12px;
     }
 
     td,
@@ -28,16 +31,16 @@ title: 时间切片
   <button type="button" class="btn btn-primary" onclick="appendMultipleTasks(3)">使用时间切片生成随机颜色表格</button>
   <table id="table" border="1px">
     <tr>
-      <th>COLUMN 1</th>
-      <th>COLUMN 2</th>
-      <th>COLUMN 3</th>
-      <th>COLUMN 4</th>
-      <th>COLUMN 5</th>
-      <th>COLUMN 6</th>
-      <th>COLUMN 7</th>
-      <th>COLUMN 8</th>
-      <th>COLUMN 9</th>
-      <th>COLUMN 10</th>
+      <th>COL 1</th>
+      <th>COL 2</th>
+      <th>COL 3</th>
+      <th>COL 4</th>
+      <th>COL 5</th>
+      <th>COL 6</th>
+      <th>COL 7</th>
+      <th>COL 8</th>
+      <th>COL 9</th>
+      <th>COL 10</th>
     </tr>
   </table>
   <script>
