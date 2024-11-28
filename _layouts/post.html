@@ -39,7 +39,7 @@ layout: default
         {% include {{ page.header-html }} %}
     </div>
     {% endif %}
-    {% page.header-mask %}
+    {% if page.header-mask %}
     <div class="header-mask"></div>
     {% endif %}
     <div class="container">
