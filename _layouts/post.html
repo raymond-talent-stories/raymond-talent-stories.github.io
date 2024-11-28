@@ -18,6 +18,7 @@ layout: default
         position: absolute;
         background-image: url('{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
         background-size: cover;
+        background-position: center center;
         {% if page.filter %}
         filter: {{ page.filter }};
         {% endif %}
