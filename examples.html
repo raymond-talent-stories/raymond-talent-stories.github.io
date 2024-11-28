@@ -17,11 +17,11 @@ header-img: "img/home-bg.jpg"
           {% for page in site.pages %}{% if page.layout == "example" %}
           <a href="{{ page.url }}">
             <div class="card">
-              <img class="card-img" src="{{ page.example-preview }}" alt="Card image cap">
+              <img class="card-img" src="{{ page.example-preview }}" alt="Card image cap" />
               <div class="card-body">
                 <h3 class="card-title">{{ page.example-name }}</h3>
                 <p class="card-text">
-                  {{ page.example-description }}</a>
+                  {{ page.example-description }}
                 </p>
               </div>
             </div>
