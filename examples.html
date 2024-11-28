@@ -15,15 +15,17 @@ header-img: "img/home-bg.jpg"
       <ul class="example-cards">
         <li class="example-item">
           {% for page in site.pages %}{% if page.layout == "example" %}
-          <div class="card">
-            <img class="card-img" src="{{ page.example-preview }}" alt="Card image cap">
-            <div class="card-body">
-              <h3 class="card-title">{{ page.example-name }}</h3>
-              <p class="card-text">
-                <a href="{{ page.url }}">{{ page.example-description }}</a>
-              </p>
+          <a href="{{ page.url }}">
+            <div class="card">
+              <img class="card-img" src="{{ page.example-preview }}" alt="Card image cap">
+              <div class="card-body">
+                <h3 class="card-title">{{ page.example-name }}</h3>
+                <p class="card-text">
+                  {{ page.example-description }}</a>
+                </p>
+              </div>
             </div>
-          </div>
+          </a>
           {% endif %}{% endfor %}
         </li>
       </ul>
