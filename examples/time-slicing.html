@@ -53,6 +53,7 @@ example-preview: /img/2024-11-01/example.png
         <th>COL 9</th>
         <th>COL 10</th>
       </tr>
+      <tbody id="tbody"></tbody>
     </table>
   </div>
   <script>
@@ -110,7 +111,6 @@ example-preview: /img/2024-11-01/example.png
     let loopSize = 10000
     let n = loopSize
     let t = 0
-    let table = document.getElementById('table')
     const timeSlicing = new TimeSlicing()
     const channel = new MessageChannel()
     channel.port1.onmessage = function () {
@@ -152,14 +152,14 @@ example-preview: /img/2024-11-01/example.png
       cell.innerHTML = t + 1
       if (t % 10 === 0) {
         const row = document.createElement('tr')
-        table.appendChild(row)
+        tbody.appendChild(row)
       }
-      table.lastChild.appendChild(cell)
+      tbody.lastChild.appendChild(cell)
       t++
     }
 
     function run() {
-      table.innerHTML = ''
+      tbody.innerHTML = ''
       n = loopSize
       t = 0
       appendTasks(5)
