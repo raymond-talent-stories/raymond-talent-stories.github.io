@@ -34,7 +34,7 @@ example-preview: /img/2024-11-01/example.png
 </head>
 
 <body>
-  <button type="button" class="btn btn-primary" onclick="appendTasks(3)">使用时间切片生成随机颜色表格</button>
+  <button type="button" class="btn btn-primary" onclick="run()">使用时间切片生成随机颜色表格</button>
   <table id="table" border="1px">
     <tr>
       <th>COL 1</th>
@@ -103,6 +103,8 @@ example-preview: /img/2024-11-01/example.png
   <script>
     let loopSize = 10000
     let n = loopSize
+    let t = 0
+    let table = document.getElementById('table')
     const timeSlicing = new TimeSlicing()
     const channel = new MessageChannel()
     channel.port1.onmessage = function () {
@@ -112,7 +114,6 @@ example-preview: /img/2024-11-01/example.png
     }
 
     function appendTasks(current) {
-      table.innerHTML = '';
       const currentTime = performance.now()
       appendTask()
       const left = current - (performance.now() - currentTime)
@@ -137,8 +138,6 @@ example-preview: /img/2024-11-01/example.png
       return [rgb, isdark]
     }
 
-    let t = 0
-    let table = document.getElementById('table')
     function task() {
       const cell = document.createElement('td')
       const [color, isdark] = rgb()
@@ -151,6 +150,13 @@ example-preview: /img/2024-11-01/example.png
       }
       table.lastChild.appendChild(cell)
       t++
+    }
+
+    function run() {
+      table.innerHTML = ''
+      n = loopSize
+      t = 0
+      appendTasks(5)
     }
   </script>
 </body>
