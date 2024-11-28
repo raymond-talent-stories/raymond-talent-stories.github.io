@@ -16,6 +16,7 @@ title: 时间切片
       table-layout: fixed;
       width: 100%;
       margin-top: 12px;
+      font-size: 0.875rem;
     }
 
     td,
@@ -124,15 +125,18 @@ title: 时间切片
       let r = Math.floor(Math.random() * 256)
       let g = Math.floor(Math.random() * 256)
       let b = Math.floor(Math.random() * 256)
+      let isdark = (r + g + b) < 255 * 1.5
       let rgb = 'rgb(' + r + ',' + g + ',' + b + ')'
-      return rgb
+      return [rgb, isdark]
     }
 
     let t = 0
     let table = document.getElementById('table')
     function task() {
       const cell = document.createElement('td')
-      cell.style.backgroundColor = rgb()
+      const [color, isdark] = rgb()
+      cell.style.backgroundColor = color
+      cell.style.color = isdark ? '#fff' : '#000'
       cell.innerHTML = t + 1
       if (t % 10 === 0) {
         const row = document.createElement('tr')
