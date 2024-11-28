@@ -7,6 +7,7 @@ header-img: "img/home-bg.jpg"
 <link rel="stylesheet" href="/css/examples.min.css">
 <header class="intro-header"
   style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div style="height: 36vh;"></div>
 </header>
 <div class="container">
   <div class="row">
@@ -17,9 +18,9 @@ header-img: "img/home-bg.jpg"
           <div class="card">
             <img class="card-img-top" src="{{ page.preview }}" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">{{ page.name }}</h5>
+              <h5 class="card-title">{{ page.example-name }}</h5>
               <p class="card-text">
-                <a href="{{ page.url }}">{{ page.descripiton }}</a>
+                <a href="{{ page.url }}">{{ page.example-descripiton }}</a>
               </p>
             </div>
           </div>
