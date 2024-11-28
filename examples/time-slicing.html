@@ -10,12 +10,16 @@ example-preview: /img/2024-11-01/example.png
 
 <head>
   <title>时间切片</title>
-  <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ " /css/bootstrap.min.css" | prepend: site.baseurl }}">
   <style>
     body {
       margin: 0;
+    }
+
+    #root {
       padding: 8px;
       background-color: #f0f0f0;
+      border-radius: 4px;
     }
 
     table {
@@ -34,21 +38,23 @@ example-preview: /img/2024-11-01/example.png
 </head>
 
 <body>
-  <button type="button" class="btn btn-primary" onclick="run()">使用时间切片生成随机颜色表格</button>
-  <table id="table" border="1px">
-    <tr>
-      <th>COL 1</th>
-      <th>COL 2</th>
-      <th>COL 3</th>
-      <th>COL 4</th>
-      <th>COL 5</th>
-      <th>COL 6</th>
-      <th>COL 7</th>
-      <th>COL 8</th>
-      <th>COL 9</th>
-      <th>COL 10</th>
-    </tr>
-  </table>
+  <div id="root">
+    <button type="button" class="btn btn-primary" onclick="run()">使用时间切片生成随机颜色表格</button>
+    <table id="table" border="1px">
+      <tr>
+        <th>COL 1</th>
+        <th>COL 2</th>
+        <th>COL 3</th>
+        <th>COL 4</th>
+        <th>COL 5</th>
+        <th>COL 6</th>
+        <th>COL 7</th>
+        <th>COL 8</th>
+        <th>COL 9</th>
+        <th>COL 10</th>
+      </tr>
+    </table>
+  </div>
   <script>
     function workLoopCreator(taskQueue, channel) {
       function workLoop(currentTime) {
