@@ -1,0 +1,147 @@
+---
+title: 时间切片
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>时间切片</title>
+  <style>
+    body {
+      word-break: break-all;
+    }
+
+    table {
+      table-layout: fixed;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    td,
+    th {
+      padding: 0 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="appendMultipleTasks(3)">使用时间切片生成随机颜色表格</button>
+  <table id="table" border="1px">
+    <tr>
+      <th>COLUMN 1</th>
+      <th>COLUMN 2</th>
+      <th>COLUMN 3</th>
+      <th>COLUMN 4</th>
+      <th>COLUMN 5</th>
+      <th>COLUMN 6</th>
+      <th>COLUMN 7</th>
+      <th>COLUMN 8</th>
+      <th>COLUMN 9</th>
+      <th>COLUMN 10</th>
+    </tr>
+  </table>
+  <script>
+    function workLoopCreator(taskQueue, channel) {
+      function workLoop(currentTime) {
+        let begin = performance.now()
+        const task = taskQueue[0]
+        if (task) {
+          task.run()
+          taskQueue.shift()
+          const leftTime = currentTime - (performance.now() - begin)
+          if (leftTime > 0) {
+            workLoop(leftTime)
+          } else {
+            channel.port2.postMessage(null)
+          }
+        }
+      }
+      return workLoop;
+    }
+    class Task {
+      currentTime = null
+      constructor(task) {
+        this.task = task;
+      }
+      run() {
+        this.task();
+      }
+    }
+    class TimeSlicing {
+      channel = new MessageChannel()
+      isTaskRunning = false
+      taskQueue = []
+      constructor() {
+        this.workLoop = workLoopCreator(this.taskQueue, this.channel)
+        this.channel.port1.onmessage = () => {
+          this.isTaskRunning = true
+          if (this.taskQueue.length > 0) {
+            this.workLoop(5)
+          }
+          if (this.taskQueue.length === 0) {
+            this.isTaskRunning = false
+          }
+        }
+      }
+      addTask(task) {
+        this.taskQueue.push(new Task(task, this.channel))
+        if (!this.isTaskRunning) {
+          this.channel.port2.postMessage(null)
+        }
+      }
+    }
+  </script>
+  <script>
+    let loopsize = 10000
+    let n = loopsize
+    const timeSlicing = new TimeSlicing()
+    const channel = new MessageChannel()
+    channel.port1.onmessage = function () {
+      if (n > 0) {
+        appendMultipleTasks(5)
+      }
+    }
+
+    function appendMultipleTasks(current) {
+      const currentTime = performance.now()
+      appendTask()
+      const left = current - (performance.now() - currentTime)
+      if (left > 0 && n > 0) {
+        appendMultipleTasks(left)
+      } else {
+        channel.port2.postMessage(null)
+      }
+    }
+
+    function appendTask() {
+      timeSlicing.addTask(task)
+      n--
+    }
+
+    function rgb() {
+      let r = Math.floor(Math.random() * 256)
+      let g = Math.floor(Math.random() * 256)
+      let b = Math.floor(Math.random() * 256)
+      let rgb = 'rgb(' + r + ',' + g + ',' + b + ')'
+      return rgb
+    }
+
+    let t = 0
+    let table = document.getElementById('table')
+    function task() {
+      const cell = document.createElement('td')
+      cell.style.backgroundColor = rgb()
+      cell.innerHTML = t + 1
+      if (t % 10 === 0) {
+        const row = document.createElement('tr')
+        table.appendChild(row)
+      }
+      table.lastChild.appendChild(cell)
+      t++
+    }
+  </script>
+</body>
+
+</html>
