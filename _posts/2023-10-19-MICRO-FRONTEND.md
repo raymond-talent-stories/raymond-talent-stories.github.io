@@ -8,7 +8,6 @@ header-img: /img/2023-11-23/shutterstock.jpg
 catalog:    true
 filter:     brightness(0.5)
 tags:
-    - React
     - Frontend
 images:
     image1: https://www.redhat.com/cms/managed-files/monolithic-vs-microservices.png
