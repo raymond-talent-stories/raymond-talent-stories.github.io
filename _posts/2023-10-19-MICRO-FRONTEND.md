@@ -2,7 +2,7 @@
 layout:     post
 title:      MICRO-FRONTEND
 subtitle:   深入微前端架构
-date:       2023-11-23
+date:       2023-10-19
 author:     Raymond Zhang
 header-img: /img/2023-11-23/shutterstock.jpg
 catalog:    true
